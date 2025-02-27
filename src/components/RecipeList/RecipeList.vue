@@ -3,12 +3,12 @@
 
 
     <div class="q-pa-xl row items-start q-gutter-md q-pa-md align-center justify-center">
-        <q-card v-for="(item, i) in data" class="my-card cursor-pointer q-ma-lg" :class="$q.screen.gt.md ? 'col-3' : 'col-12'" @click="expanded = []; expanded[i] = true">
+        <q-card v-for="(item, i) in data" class="my-card cursor-pointer q-ma-lg"
+            :class="$q.screen.gt.md ? 'col-3' : 'col-12'" @click="expanded = []; expanded[i] = true">
             <!-- <img v-if="item.image != undefined" :src="Array.isArray(item.image) ? item?.image[0] : item.image"
                 style="height: 140px; width: 150px" alt="alternative text" /> -->
 
-            <q-img :src="Array.isArray(item.image) ? item?.image[0] : item.image"
-                fit="fill">
+            <q-img :src="Array.isArray(item.image) ? item?.image[0] : item.image" fit="fill">
                 <template v-slot:error>
                     <div max-width="400px" class="absolute-full flex flex-center bg-white text-black">
                         Image not available
@@ -21,7 +21,7 @@
                 </template> -->
             </q-img>
             <q-card-section>
-                <div class="text-h6 text-center">{{ i }} {{ item.name }}</div>
+                <div class="text-h6 text-center"> {{ item.name }}</div>
                 <div class="text-subtitle2"> Duration : {{ item.totalTime?.replace("PT", "").replace("M",
                     "&nbspMinutes").replace("H", " Hours ") }}
                 </div>
@@ -35,10 +35,9 @@
             <q-slide-transition>
                 <div v-show="expanded[i]">
                     <q-separator />
-                    <q-card-section class="text-subtitle2">
-                        {{ item.description }}
+                    <q-card-section class="text-subtitle2" v-html="item.description">
                     </q-card-section>
-                    <q-separator inline/>
+                    <q-separator inline />
                     <div class="q-pa-xs text-center bg-grey" @click="displayRecipe(item)">See more</div>
                 </div>
             </q-slide-transition>

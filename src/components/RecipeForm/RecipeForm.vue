@@ -84,12 +84,12 @@ export default defineComponent({
 
 
         let dialog = ref(false);
-        let arrIngredient = ref([]);
+        let arrIngredient = ref<any[]>([]);
         let ing = ref("")
-        let arrInstructions = ref([]);
+        let arrInstructions = ref<any[]>([]);
         let ins = ref("")
         let img = ref()
-        let recipe = ref({})
+        let recipe = ref<{ [key: string]: any }>({})
 
         // localStorage.removeItem("recipe");
 
@@ -115,7 +115,7 @@ export default defineComponent({
 
         }
 
-        const addIngredients = (val: string): void => {
+        const addIngredients = (val: any): void => {
             arrIngredient.value.push(val)
             ing.value = ""
             
@@ -153,7 +153,7 @@ export default defineComponent({
 
                 localStorage.setItem('recipe', JSON.stringify(recipeLocal));
                 dialog.value = false;
-                alert('New Recipe Added!', recipeLocal);            
+                alert('New Recipe Added!' +  recipeLocal);            
 
             }; 
             

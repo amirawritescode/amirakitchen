@@ -1,4 +1,4 @@
-# encore-med
+# amirakitchen
 
 ## Project setup
 ```
